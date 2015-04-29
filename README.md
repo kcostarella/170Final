@@ -1,2 +1,2 @@
 # 170Final
-Jonathan, Gunsoo and Ko vs. The World
+Jonathan, Gunsoo, and Ko vs. The World
