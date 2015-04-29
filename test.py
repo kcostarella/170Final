@@ -9,9 +9,7 @@ for t in xrange(1, T+1):
         d[i] = [int(x) for x in fin.readline().split()] # fills up the all N arrarys in array d
     c = fin.readline() # c becomes a string of all of the colors (RBRBR etc.)
 
-
-    # find an answer, and put into assign
-    assign = [0] * N
+    assign = [0] * N # the answer array being instantiated to all zeros
 
     counter = 0
     currCity = 0
@@ -32,7 +30,7 @@ for t in xrange(1, T+1):
         currCity = closestCity
 
         hasVisited[currCity] = True
-        assign[counter] = currCity
+        assign[counter] = currCity # find an answer, and put into assign
 
         counter += 1
 
