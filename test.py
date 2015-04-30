@@ -9,7 +9,7 @@ for t in xrange(1, T+1):
         d[i] = [int(x) for x in fin.readline().split()] # fills up the all N arrarys in array d
     c = fin.readline() # c becomes a string of all of the colors (RBRBR etc.)
 
-    assign = [0] * N # the answer array being instantiated to all zeros
+    assign = [0] * N # the answer array being instantiated to all zeros/ path taken
 
     counter = 0
     currCity = 0
