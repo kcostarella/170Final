@@ -39,3 +39,4 @@ def gen_instance():
     for color in nodes:
         fout.write("%s" % color)
     return
+BRRRBRBBRBRRRRRBRRRBBRBBBBBRRRBBRBRRBRRBRBBBBBBRRB
