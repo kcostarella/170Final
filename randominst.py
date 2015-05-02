@@ -4,12 +4,13 @@ edges = [[] for i in range(24)]
 nodes = []
 color = ["R", "B"]
 
-def gen_edges():
+def gen_edges(numEdges):
+    edges = [[] for i in range(numEdges)]
     for row in edges:
-        for i in range(24):
+        for i in range(numEdges):
             row.append(0)
-    for i in range(24):
-        for j in range(24):
+    for i in range(numEdges):
+        for j in range(numEdges):
             if i == j:
                 edges[i][j] = 0
             else: 
@@ -18,25 +19,24 @@ def gen_edges():
                 edges[j][i] = weight
     return edges
 
-def gen_nodes():
-    for i in range(24):
+def gen_nodes(numEdges):
+    for i in range(numEdges):
         nodes.append(0)
-    for i in range(24):
+    for i in range(numEdges):
         nodes[i] = color[random.randint(0,1)]
     return nodes
 
-def gen_instance():
-    fout = open("gkj1.in", "w")
-    edges = gen_edges()
-    nodes = gen_nodes()
-    fout.write("24\n")
-    for i in range(24):
-        for j in range(24):
-            if j != 23:
+def gen_instance(numEdges, fileName):
+    fout = open(fileName, "w")
+    edges = gen_edges(numEdges)
+    nodes = gen_nodes(numEdges)
+    fout.write(numEdges + "\n")
+    for i in range(numEdges):
+        for j in range(numEdges):
+            if j != numEdges - 1:
                 fout.write("%s " % str(edges[i][j]))
             else:
                 fout.write("%s\n" % str(edges[i][j]))
     for color in nodes:
         fout.write("%s" % color)
     return
-BRRRBRBBRBRRRRRBRRRBBRBBBBBRRRBBRBRRBRRBRBBBBBBRRB
