@@ -57,9 +57,6 @@ for t in xrange(1, T+1):
 		colorCount[1] = 1 #... and We've now seen this color once...
 		hasVisited[currentState] = True #... and We've just visited this state...
 		solution.append[currentState] #... and this state is part of our solution
-
-
-
 		#Travel (Loops through the remaning N-1 cities)    	
     	for n in range(0,N-1):
     		prevState = currentState #saves the previous state
@@ -90,8 +87,3 @@ for t in xrange(1, T+1):
     def UpdateSolution(instance, weight):
     	return (instance, weight)
 
-
-
-    hasVisited[currCity] = True 
-    assign[counter] = currCity
-    counter += 1
