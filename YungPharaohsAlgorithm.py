@@ -9,16 +9,10 @@ for t in xrange(1, T+1):
     d = [[] for i in range(N)] # creates an array of N empty arrays
     for i in xrange(N):
         d[i] = [int(x) for x in fin.readline().split()] # fills up the all N arrarys in array d
-    c = fin.readline() # c becomes a string of all of the colors (RBRBR etc.)
-
-    assign = [0] * N # the answer array being instantiated to all zeros/ path taken
+    c = fin.readline() # c becomes a string of all of the colors (RBRBR etc.) 	
  	
- 	counter = 0 #the currrent number of cities visited
-    currCity = random.randint(0, N-1) #chooses a random first city
-    totalWeight = 0 # the total weight of our answer
     InstanceSeed = 5 #how instances to generate
     UpdateSeed = 4 #how many improvement update steps are taken
-
 
     allSolutions = GenerateSolution(InstanceSeed, ImproveSeed) #allSolutions is an dict with <assign,weight> pairs, where assign are solutions and weight is the 
     #associated weight of the solution
@@ -43,7 +37,8 @@ for t in xrange(1, T+1):
     	return allSolutions
 
     def GenerateInstance():
-    	
+    	assign = [0] * N # the answer array being instantiated to all zeros/ path taken
+
     	return 0
 
     def UpdateInstance(instance, weight):
