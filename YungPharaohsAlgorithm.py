@@ -17,7 +17,9 @@ def GenerateSolutions(iSeed,uSeed):
 	how many iterations of updateSolution will be called per solution"""
 	allSolutions = {}
 	for i in range(0,iSeed):
-		solution,weight = GenerateSolution() #generates a random instance
+		solution,weight = GenerateSolution()
+		while solution != None:
+			solution,weight = GenerateSolution() #generates a random instance
 		for i in range(0,uSeed):
 			solution, weight = UpdateSolution(solution,weight) #hill climbing improvement algorithm
 		allSolutions[tuple(solution)] = weight #adds the solution,weight pair to the allSolutions dict
@@ -40,8 +42,9 @@ def GenerateSolution():
 	for n in range(0,N-1):
 		prevState = currentState #saves the previous state
 		validMoves = GenerateValidPositions(hasVisited, colorCount) #generates valid next moves determined by internal logic in GenerateValidPositions
+		if len(validMoves) == 0:
+			return None
 		currentState = validMoves[random.randint(0,len(validMoves)-1)] #assigns the currentState to a random state from the validMoves
-
 		totalWeight += d[prevState][currentState] #increments the total weight by the cost to travel form prevState to currentState
 		#updates the colorCount depending on the color of currentState
 		if colorCount[0] == c[currentState]:
@@ -81,7 +84,7 @@ for t in xrange(1, T+1):
 
  	
 
-    InstanceSeed = 1000 #how instances to generate
+    InstanceSeed = 1 #how instances to generate
     ImproveSeed = 4 #how many improvement update steps are taken
 
 
