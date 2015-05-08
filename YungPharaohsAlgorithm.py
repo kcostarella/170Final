@@ -2,12 +2,6 @@ import random,sys
 
 def PickBestSolution(allSolutions):
 	"""Picks the solution with the lowest weight from the allSolutions dictionary."""
-	currentBest = sys.maxint
-	for solution in allSolutions:
-		print("\n Solution: " + str(solution) + "\n with weight:" + str(allSolutions[solution]) + "\n")
-		if allSolutions[solution] < currentBest:
-			currentBest = allSolutions[solution]
-    		currentBestSolution = solution
    	return min(allSolutions, key=allSolutions.get)
 
 def GenerateSolutions(iSeed,uSeed):
@@ -18,7 +12,7 @@ def GenerateSolutions(iSeed,uSeed):
 	allSolutions = {}
 	for i in range(0,iSeed):
 		solution,weight = GenerateSolution()
-		while solution != None:
+		while solution == None:
 			solution,weight = GenerateSolution() #generates a random instance
 		for i in range(0,uSeed):
 			solution, weight = UpdateSolution(solution,weight) #hill climbing improvement algorithm
@@ -43,7 +37,7 @@ def GenerateSolution():
 		prevState = currentState #saves the previous state
 		validMoves = GenerateValidPositions(hasVisited, colorCount) #generates valid next moves determined by internal logic in GenerateValidPositions
 		if len(validMoves) == 0:
-			return None
+			return (None,None)
 		currentState = validMoves[random.randint(0,len(validMoves)-1)] #assigns the currentState to a random state from the validMoves
 		totalWeight += d[prevState][currentState] #increments the total weight by the cost to travel form prevState to currentState
 		#updates the colorCount depending on the color of currentState
@@ -71,7 +65,7 @@ def UpdateSolution(instance, weight):
 	return (instance, weight)
 
 
-T = 2 # number of test cases
+T = 1 # number of test cases
 fout = open ("answer.out", "w")
 for t in xrange(1, T+1):
     fin = open(str(t) + ".in", "r")
@@ -84,7 +78,7 @@ for t in xrange(1, T+1):
 
  	
 
-    InstanceSeed = 1 #how instances to generate
+    InstanceSeed = 100000 #how instances to generate
     ImproveSeed = 4 #how many improvement update steps are taken
 
 
@@ -92,6 +86,7 @@ for t in xrange(1, T+1):
     #associated weight of the solution
     #Picks the best solution
     bestSolution = PickBestSolution(allSolutions)
+    print(allSolutions[bestSolution])
     fout.write("%s\n" % " ".join(map(str, bestSolution))) # writes assign (the answer) to answer.out
 fout.close()
 
