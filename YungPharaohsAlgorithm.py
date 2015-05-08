@@ -4,10 +4,11 @@ def PickBestSolution(allSolutions):
 	"""Picks the solution with the lowest weight from the allSolutions dictionary."""
 	currentBest = sys.maxint
 	for solution in allSolutions:
+		print("\n Solution: " + str(solution) + "\n with weight:" + str(allSolutions[solution]) + "\n")
 		if allSolutions[solution] < currentBest:
 			currentBest = allSolutions[solution]
     		currentBestSolution = solution
-   	return currentBestSolution
+   	return min(allSolutions, key=allSolutions.get)
 
 def GenerateSolutions(iSeed,uSeed):
 	"""Generates a dictionary of <solution,weight> pairs, where sollution is a solution to an instance of NTSP
@@ -67,7 +68,7 @@ def UpdateSolution(instance, weight):
 	return (instance, weight)
 
 
-T = 1 # number of test cases
+T = 2 # number of test cases
 fout = open ("answer.out", "w")
 for t in xrange(1, T+1):
     fin = open(str(t) + ".in", "r")
@@ -80,7 +81,7 @@ for t in xrange(1, T+1):
 
  	
 
-    InstanceSeed = 100 #how instances to generate
+    InstanceSeed = 1000 #how instances to generate
     ImproveSeed = 4 #how many improvement update steps are taken
 
 
